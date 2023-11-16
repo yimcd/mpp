@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, doc, scriptTagName, dataLayerStr, gTagId){
+            w[dataLayerStr]= w[dataLayerStr] || [];
+            w[dataLayerStr].push(
+                {
+                    'gtm.start' : new Date().getTime(),
+                    event : 'gtm.js'
+                }
+            );
+
+            var elFirstScript = doc.getElementsByTagName(scriptTagName)[0],
+                elGTagScript = doc.createElement(scriptTagName),
+                dl = dataLayerStr != 'dataLayer' ? '&l=' + dataLayerStr : '';
+
+            elGTagScript.async = true;
+            elGTagScript.src= 'https://www.googletagmanager.com/gtm.js?id=' + gTagId + dl;
+            elFirstScript.parentNode.insertBefore(elGTagScript, elFirstScript);
+        })(window, document, 'script', 'dataLayer', 'GTM-5QHX48FM');
+    </script>
+    <!-- End Google Tag Manager -->
+    <script src="./index.js"></script>
+    <meta charset="utf-8"/>
+    <title>Moloco Pixel Test</title>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5939GL6H"
+            height="0"
+            width="0"
+            style="display:none;visibility:hidden">
+    </iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<h1>Moloco Pixel Test</h1>
+<div>
+    <div>
+        <img src="./puppy-doll.jpeg" width="300" />
+        <p>Price: 5000</p>
+    </div>
+    <button type="button" onclick="addToCart(1, 'puppy-doll', 5000)">Add To Cart</button>
+    <button type="button" onclick="buy(1, 'puppy-doll', 5000)">Buy Now</button>
+</div>
+<div>
+    <div>
+        <img src="./cat-doll.jpg" width="300" />
+        <p>Price: 3000</p>
+    </div>
+    <button type="button" onclick="addToCart(2, 'cat-doll', 3000)">Add To Cart</button>
+    <button type="button" onclick="buy(2, 'cat-doll', 3000)">Buy Now</button>
+</div>
+</body>
+<script>
+    function addToCart(item_id, item_name, value) {
+        dataLayer.push({
+            event: 'add_to_cart',
+            'ecommerce': {
+                currency: 'KRW',
+                value,
+                items: [{
+                   item_id,
+                   item_name,
+                }],
+            }
+        });
+    }
+
+    function buy(item_id, item_name, value) {
+        dataLayer.push({
+            event: 'purchase',
+            'ecommerce': {
+                currency: 'KRW',
+                value,
+                items: [{
+                    item_id,
+                    item_name,
+                }],
+            }
+        });
+    }
+</script>
+
+</html>
